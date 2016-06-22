@@ -9,7 +9,7 @@ function getTimingData() {
     console.warn("Page is still loading - please try again when page is loaded.");
   }
 
-  return data
+  return data;
 }
 
 function getMarkAndMeasure() {
@@ -17,7 +17,7 @@ function getMarkAndMeasure() {
   data.marks = window.performance.getEntriesByType("mark");
   data.measures = window.performance.getEntriesByType("measure");
   // window.performance.webkitGetEntriesByType()...
-  return data
+  return data;
 }
 
 function getResourcesData() {
@@ -146,7 +146,7 @@ function getResourcesData() {
         return a + b.duration;
       }) / data.slowestCalls.length);
   }
-  return data
+  return data;
 }
 
 var getMetricsForTiming = function () {
@@ -191,7 +191,8 @@ var getMetricsForResource = function () {
     tldAndSubdomainRequests: data.currAndSubdomainRequests,
     resources: resources
   }
-}
+};
+
 let isReady = false;
 const readyFns = [];
 window.addEventListener('load', function () {
