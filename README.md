@@ -4,7 +4,7 @@
 使用`window.performance`收集性能数据,应用于android和ios上的web页面
 
 目前safari只支持 `Navigation Timing`,所以`resource`类的entries获取不了,
-`mark`和`measure`通过[usertiming](`https://github.com/nicjansma/usertiming.js`)来polyfill
+`mark`和`measure`通过[usertiming](https://github.com/nicjansma/usertiming.js)来polyfill
 (为了方便,已经把这个项目的文件copy到本项目的polyfill中,用户需要首先加载里面的`usertiming.js`)
 
 
@@ -82,6 +82,14 @@ getMarkAndMeasure()
     },1000)
 
     window.performance.mark('mark_start_xhr');
+
+
+鸣谢:
+   统计数据的部分代码来自项目:
+
+   [performance-bookmarklet](https://github.com/micmro/performance-bookmarklet)
+
+   是一个chrome和firefox的插件,可以安装,实际体验一下.
 
 
 
