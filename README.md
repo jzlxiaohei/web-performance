@@ -84,7 +84,7 @@ getMarkAndMeasure()
     window.performance.mark('mark_start_xhr');
 
 
-鸣谢:
+#鸣谢:
    统计数据的部分代码来自项目:
 
    [performance-bookmarklet](https://github.com/micmro/performance-bookmarklet)
