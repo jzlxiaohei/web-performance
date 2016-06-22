@@ -2,7 +2,7 @@ import helper from "./helpers";
 
 function getTimingData() {
   const data = {};
-  
+
   data.perfTiming = window.performance.timing;
 
   if (data.perfTiming.loadEventEnd - data.perfTiming.navigationStart < 0) {
@@ -151,13 +151,16 @@ function getResourcesData() {
 
 var getMetricsForTiming = function () {
   const data = getTimingData();
+  const perfTiming = data.perfTiming
   return {
-    timestamp: (new Date(data.perfTiming.navigationStart)).toISOString(),
     url: window.location.href,
-    total: data.perfTiming.loadEventEnd - data.perfTiming.navigationStart,
-    timeToFirstByte: data.perfTiming.responseStart - data.perfTiming.navigationStart,
-    domContentLoading: data.perfTiming.domContentLoadedEventStart - data.perfTiming.domLoading,
-    domProcessing: data.perfTiming.domComplete - data.perfTiming.domLoading
+    start: perfTiming.navigationStart,
+    dns: perfTiming.domainLookupEnd - perfTiming.domainLookupStart,
+    tcp: perfTiming.connectEnd - perfTiming.connectStart,
+    total: perfTiming.loadEventEnd - perfTiming.navigationStart,
+    timeToFirstByte: perfTiming.responseStart - perfTiming.navigationStart,
+    domContentLoading: perfTiming.domContentLoadedEventStart - perfTiming.domLoading,
+    domProcessing: perfTiming.domComplete - perfTiming.domLoading
   };
 };
 
@@ -176,13 +179,14 @@ var getMetricsForResource = function () {
       dns: res.dns,
       tcp: res.tcp,
       ttfb: res.ttfb,
-      requestDuration: res.requestDuration
+      requestDuration: res.requestDuration,
+      ssl: res.ssl
     }
   });
   return {
     requests: data.requestsOnly.length,
     domains: data.requestsByDomain.length,
-    subDomainsOfTdl: data.hostSubdomains,
+    subDomainsOfTld: data.hostSubdomains,
     requestsToHost: data.hostRequests,
     tldAndSubdomainRequests: data.currAndSubdomainRequests,
     resources: resources
@@ -207,7 +211,7 @@ export default {
   _getResourcesData: getResourcesData,
   _getTimingData: getTimingData,
   ready(fn){
-    if (isReady()) {
+    if (isReady) {
       fn()
     } else {
       readyFns.push(fn)
