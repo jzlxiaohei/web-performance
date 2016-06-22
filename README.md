@@ -7,6 +7,9 @@
 `mark`和`measure`通过[usertiming](https://github.com/nicjansma/usertiming.js)来polyfill
 (为了方便,已经把这个项目的文件copy到本项目的polyfill中,用户需要首先加载里面的`usertiming.js`)
 
+#安装
+
+    npm i web-preformance
 
 #api
 
