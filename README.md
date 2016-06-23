@@ -87,6 +87,10 @@ getMarkAndMeasure()
     window.performance.mark('mark_start_xhr');
 
 
+# Navigation timing 详细图解
+
+![Navigation timing overview](http://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/timing-overview.png)
+
 #鸣谢:
    统计数据的部分代码来自项目:
 
