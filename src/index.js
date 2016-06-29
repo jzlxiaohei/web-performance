@@ -13,7 +13,7 @@ function getTimingData() {
 }
 
 function getMarkAndMeasure() {
-  const data = {}
+  const data = { url: window.location.href };
   data.marks = window.performance.getEntriesByType("mark");
   data.measures = window.performance.getEntriesByType("measure");
   // window.performance.webkitGetEntriesByType()...
