@@ -12,10 +12,28 @@ function getTimingData() {
   return data;
 }
 
-function getMarkAndMeasure() {
+function mapMarkOrMeasure(m){
+  return {
+    name:m.name,
+    entryType:m.entryType,
+    startTime:m.startTime,
+    duration:m.duration
+  }
+}
+
+
+function getMarkAndMeasure(useNative) {
   const data = { url: window.location.href };
-  data.marks = window.performance.getEntriesByType("mark");
-  data.measures = window.performance.getEntriesByType("measure");
+  const marks = window.performance.getEntriesByType("mark"),
+    measures = window.performance.getEntriesByType("measure");
+  if(useNative){
+    data.marks = marks;
+    data.measures = measures;
+  }else{
+    data.marks = marks.map(mapMarkOrMeasure);
+    data.measures = measures.map(mapMarkOrMeasure);
+  }
+
   // window.performance.webkitGetEntriesByType()...
   return data;
 }
