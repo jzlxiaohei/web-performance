@@ -184,6 +184,7 @@ var getMetricsForResource = function () {
     }
   });
   return {
+    url: window.location.href,
     requests: data.requestsOnly.length,
     domains: data.requestsByDomain.length,
     subDomainsOfTld: data.hostSubdomains,
