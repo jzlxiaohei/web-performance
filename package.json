@@ -1,6 +1,6 @@
 {
   "name": "web-performance",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "collect performance for mobile web (using timing api)",
   "main": "./lib/index.js",
   "scripts": {
