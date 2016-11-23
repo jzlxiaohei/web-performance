@@ -9,7 +9,8 @@ var commonConfig = {
     path: path.join(__dirname, 'dist'),
     filename: '[name].min.js',
     publicPath: '',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+    library:'llsWebPerformance'
   },
   plugins: [
     new webpack.DefinePlugin({
